@@ -1,0 +1,20 @@
+Train:
+  batch_size: 20
+  learning_rate: 0.1
+  reg: 0.0001
+  epochs: 10
+  steps: [6, 8]
+  warmup: 0
+  momentum: 0.9
+  gamma: .95
+  beta: .9999
+
+network:
+  model: DecomposableAttention 
+
+data:
+  max_netural: 5 
+  save_best: True
+
+loss:
+  loss_type: Focal # CE or Focal
