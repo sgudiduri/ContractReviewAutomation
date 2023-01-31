@@ -1,0 +1,16 @@
+include *.txt
+include *.md
+include *.pkl
+recursive-include ./contract_nli/*
+
+include contract_nli/trained_models/*.pth
+include contract_nli/VERSION
+include contract_nli/config/config.yml
+
+include ./requirements/requirements.txt
+include ./requirements/test_requirements.txtpy
+exclude *.log
+exclude *.cfg
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
