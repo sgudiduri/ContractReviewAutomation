@@ -10,5 +10,5 @@ class Core():
         self.VOCAB_PATH = "vocab.pth"
         self.MODEL_PATH = "model.pth"
 
-        self.embed_size: 100
-        self.num_hiddens: 200  
+        self.embed_size= 100
+        self.num_hiddens= 200  

@@ -7,12 +7,14 @@ from sklearn.metrics import classification_report
 class Predict():
     def __init__(self, embed_size, num_hiddens,model_path,vocab_path):
       self.embed_size = embed_size
-      self.num_hiddens = num_hiddens
-      self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+      self.num_hiddens = num_hiddens      
       self.vocab = torch.load(vocab_path)
       self.model = DecomposableAttention(self.vocab, self.embed_size,self.num_hiddens)
-      self.model.load_state_dict(torch.load(model_path)) 
-      self.model.to(self.device)     
+      if torch.cuda.is_available():
+        self.model.load_state_dict(torch.load(model_path)) 
+        self.model.to(self.device)   
+      else:
+        self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))  
       self.model.eval()
       
     def make_single_prediction(self, premise, hypothesis):         
