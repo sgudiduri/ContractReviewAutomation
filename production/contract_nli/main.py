@@ -1,14 +1,8 @@
 from yaml.loader import SafeLoader
 import yaml
-
-import torch
-import torchtext
-from torchtext import datasets
-from torch import nn
 from d2l import torch as d2l
 
 from preprocessing.data_management import DataService
-from model.decomposable_attention import DecomposableAttention
 from train import Train
 from predict import Predict
 

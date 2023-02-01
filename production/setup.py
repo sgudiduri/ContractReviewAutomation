@@ -6,7 +6,7 @@ from pathlib import Path
 from setuptools import find_packages, setup
 
 # Package meta-data.
-NAME = 'Contract_NLI_V1'
+NAME = 'contract_nli'
 DESCRIPTION = "Text Classifier to access compliance"
 URL = "https://github.com/sgudiduri/CSE-6748/tree/main/production"
 EMAIL = "siddu.gemeni@gmail.com"

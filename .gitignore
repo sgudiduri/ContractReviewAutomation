@@ -1,0 +1,3 @@
+
+production/dist/*
+production/contract_nli.egg-info/*
