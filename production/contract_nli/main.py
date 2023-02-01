@@ -2,14 +2,18 @@ from yaml.loader import SafeLoader
 import yaml
 from d2l import torch as d2l
 
-from preprocessing.data_management import DataService
-from train import Train
-from predict import Predict
+from contract_nli.preprocessing.data_management import DataService
+from contract_nli.train import Train
+from contract_nli.predict import Predict
+from contract_nli.config.core import Core
 
 # Open the file and load the file
 with open('config/config.yaml') as f:
     config = yaml.load(f, Loader=SafeLoader)
     print(config)
+
+vocab_path = f"{c.TRAINED_MODEL_DIR}/{c.VOCAB_PATH}"
+model_path = f"{c.TRAINED_MODEL_DIR}/{c.MODEL_PATH}"
 
 args = config['Train']
 ds = DataService()
@@ -22,11 +26,11 @@ train_iter,test_iter,vocab= ds.create_snli_dataset(train=train_set, \
 #Train
 tr = Train()
 tr.run_training(train_iter, test_iter, vocab,args["learning_rate"],\
-                args["epochs"],args["embed_size"],args["num_hiddens"], device) 
-
+                args["epochs"],args["embed_size"],args["num_hiddens"],
+                device, model_path, vocab_path) 
 
 #Predict
-pr = Predict(args["embed_size"],args["num_hiddens"])
+pr = Predict(args["embed_size"],args["num_hiddens"], model_path, vocab_path)
 pr.make_multiple_prediction_with_classification_report(test_set)
 
 
