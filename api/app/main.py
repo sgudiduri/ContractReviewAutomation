@@ -50,9 +50,9 @@ async def PredictNLI(premise: str, hypothesis: str ) -> dict:
     c = Core()
     vocab_path = f"{c.TRAINED_MODEL_DIR}/{c.VOCAB_PATH}"
     model_path = f"{c.TRAINED_MODEL_DIR}/{c.MODEL_PATH}"
-    p = Predict(100, 200, model_path, vocab_path)
-    res = p.make_single_prediction(premise, hypothesis)
-    return health
+    p = Predict(c.embed_size, c.num_hiddens, model_path, vocab_path)
+    res = p.make_single_prediction(premise.split(), hypothesis.split())
+    return dict(Prediction=res)
 
 
 app.include_router(root_router)
