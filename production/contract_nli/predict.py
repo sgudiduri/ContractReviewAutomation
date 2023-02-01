@@ -1,13 +1,13 @@
 import torch
 from d2l import torch as d2l
 from torch import nn
-from model.decomposable_attention import DecomposableAttention
+from contract_nli.model.decomposable_attention import DecomposableAttention
 from sklearn.metrics import classification_report
 
 class Predict():
     def __init__(self, embed_size, num_hiddens,
-                  model_path="trained_model/model.pth",
-                  vocab_path="trained_model/vocab.pth"):
+                  model_path="contract_nli/trained_model/model.pth",
+                  vocab_path="contract_nli/trained_model/vocab.pth"):
       self.embed_size = embed_size
       self.num_hiddens = num_hiddens
       self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

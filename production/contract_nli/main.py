@@ -13,7 +13,7 @@ with open('config/config.yaml') as f:
 
 args = config['Train']
 ds = DataService()
-train_set,test_set= ds.load_data('data/train.csv', 'data/test.csv')
+train_set,test_set= ds.load_data('contract_nli/data/train.csv', 'contract_nli/data/test.csv')
 device = d2l.try_all_gpus()
 num_workers = d2l.get_dataloader_workers()
 train_iter,test_iter,vocab= ds.create_snli_dataset(train=train_set, \
@@ -28,6 +28,7 @@ tr.run_training(train_iter, test_iter, vocab,args["learning_rate"],\
 #Predict
 pr = Predict(args["embed_size"],args["num_hiddens"])
 pr.make_multiple_prediction_with_classification_report(test_set)
+
 
 #Make Single Prediction
 test_set.iloc[4, :]

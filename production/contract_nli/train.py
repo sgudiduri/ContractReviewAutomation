@@ -1,7 +1,7 @@
 import torch
 from d2l import torch as d2l
 from torch import nn
-from model.decomposable_attention import DecomposableAttention
+from contract_nli.model.decomposable_attention import DecomposableAttention
 
 class Train():
     def __init__(self):
@@ -10,8 +10,8 @@ class Train():
     def run_training(self, train_iter, test_iter,vocab, learning_rate, 
                             epochs, embed_size, num_hiddens,device,
                             save_result: bool = True,
-                            save_path:str = "trained_model/model.pth",
-                            vocab_path:str = "trained_model/vocab.pth"):         
+                            save_path:str = "contract_nli/trained_model/model.pth",
+                            vocab_path:str = "contract_nli/trained_model/vocab.pth"):         
         net = DecomposableAttention(vocab, embed_size, num_hiddens)
         glove_embedding = d2l.TokenEmbedding('glove.6b.100d')
         embeds = glove_embedding[vocab.idx_to_token]

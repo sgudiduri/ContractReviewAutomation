@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 from torch.nn import functional as F
-from model.mlp import mlp
+from contract_nli.model.mlp import mlp
 
 class Attend(nn.Module):
     def __init__(self, num_inputs, num_hiddens, **kwargs):
