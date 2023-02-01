@@ -12,12 +12,15 @@ with open('config/config.yaml') as f:
     config = yaml.load(f, Loader=SafeLoader)
     print(config)
 
+c = Core()
 vocab_path = f"{c.TRAINED_MODEL_DIR}/{c.VOCAB_PATH}"
 model_path = f"{c.TRAINED_MODEL_DIR}/{c.MODEL_PATH}"
+train_path = f"{c.DATA_DIR}/{c.TRAIN_PATH}"
+test_path = f"{c.DATA_DIR}/{c.TEST_PATH}"
 
 args = config['Train']
 ds = DataService()
-train_set,test_set= ds.load_data('contract_nli/data/train.csv', 'contract_nli/data/test.csv')
+train_set,test_set= ds.load_data(train_path, test_path)
 device = d2l.try_all_gpus()
 num_workers = d2l.get_dataloader_workers()
 train_iter,test_iter,vocab= ds.create_snli_dataset(train=train_set, \
