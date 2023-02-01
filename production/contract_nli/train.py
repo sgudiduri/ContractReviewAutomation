@@ -9,9 +9,7 @@ class Train():
       
     def run_training(self, train_iter, test_iter,vocab, learning_rate, 
                             epochs, embed_size, num_hiddens,device,
-                            save_result: bool = True,
-                            save_path:str = "contract_nli/trained_model/model.pth",
-                            vocab_path:str = "contract_nli/trained_model/vocab.pth"):         
+                            save_path,vocab_path,save_result: bool = True):         
         net = DecomposableAttention(vocab, embed_size, num_hiddens)
         glove_embedding = d2l.TokenEmbedding('glove.6b.100d')
         embeds = glove_embedding[vocab.idx_to_token]

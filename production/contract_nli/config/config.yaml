@@ -8,5 +8,3 @@ Train:
   save_best: True
   trainer: "Adam"
   loss: "CrossEntropyLoss"
-  train_data: "contract_nli/data/train.csv"
-  test_data: "contract_nli/data/test.csv"
