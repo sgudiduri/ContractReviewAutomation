@@ -39,7 +39,7 @@ def list_reqs(fname="requirements.txt"):
 # Where the magic happens:
 setup(
     name=NAME,
-    version="1.0.0",
+    version="1.0.2",
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -47,8 +47,8 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=("tests",)),
-    package_data={"contract_nli": ["VERSION"]},
+    packages=find_packages(),
+    package_data={"contract_nli": ["main.py"]},
     install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
