@@ -12,7 +12,7 @@ class Predict():
       self.model = DecomposableAttention(self.vocab, self.embed_size,self.num_hiddens)
       if torch.cuda.is_available():
         self.model.load_state_dict(torch.load(model_path)) 
-        self.model.to(self.device)   
+        self.model.to("cuda")   
       else:
         self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))  
       self.model.eval()
