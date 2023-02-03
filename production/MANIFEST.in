@@ -7,6 +7,7 @@ include ./contract_nli/config/*.yaml
 include ./contract_nli/preprocessing/*.py
 include ./contract_nli/trained_model/*.pth
 include ./contract_nli/*.py
+include ./contract_nli/*.yaml
 include ./contract_nli/VERSION
 
 

@@ -6,7 +6,7 @@ from fastapi.responses import RedirectResponse, FileResponse
 from loguru import logger
 import numpy as np
 from contract_nli.predict import Predict
-from contract_nli.config.core import Core
+from contract_nli.config.core import config,TRAINED_MODEL_DIR
 
 favicon_path = 'favicon.ico'
 api_router = APIRouter()
@@ -47,10 +47,11 @@ async def PredictNLI(premise: str, hypothesis: str ) -> dict:
     """
     Root Get
     """
-    c = Core()
-    vocab_path = f"{c.TRAINED_MODEL_DIR}/{c.VOCAB_PATH}"
-    model_path = f"{c.TRAINED_MODEL_DIR}/{c.MODEL_PATH}"
-    p = Predict(c.embed_size, c.num_hiddens, model_path, vocab_path)
+    model_config = config.model_config
+    trained_model_dir_path = TRAINED_MODEL_DIR.as_posix()
+    vocab_path = f"{trained_model_dir_path}/{config.app_config.vocab_path}"
+    model_path = f"{trained_model_dir_path}/{config.app_config.model_path}"
+    p = Predict(model_config.embed_size, model_config.num_hiddens, model_path, vocab_path)
     res = p.make_single_prediction(premise.split(), hypothesis.split())
     return dict(Prediction=res)
 
