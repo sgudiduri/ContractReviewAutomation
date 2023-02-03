@@ -1,0 +1,21 @@
+#APP NAME
+package_name: Contract_NLI
+
+#DATA PATH
+train_path: "train.csv"
+test_path: "test.csv"
+
+# MODEL PERSISTING
+vocab_path: "vocab.pth"
+model_path: "model.pth"
+
+# MODEL HYPERPARAMETERS
+num_step: 50
+batch_size: 256
+learning_rate: 0.01
+embed_size: 100
+num_hiddens: 200
+epochs: 15
+save_best: True
+trainer: "Adam"
+loss: "CrossEntropyLoss"
