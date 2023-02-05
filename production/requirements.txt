@@ -1,0 +1,14 @@
+# packaging
+setuptools==65.5.0
+wheel==0.37.1
+
+# production requirements
+d2l==1.0.0-alpha1.post0
+torchvision==0.14.1
+
+#config
+strictyaml==1.6.2
+pydantic==1.10.2
+
+# testing requirements
+pytest==7.1.2
