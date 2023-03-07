@@ -27,17 +27,14 @@ root_router = APIRouter()
 async def favicon():
     return FileResponse(favicon_path)
 
-@app.get("/")
-async def docs_redirect():
-    return RedirectResponse(url='/docs')
 
 @root_router.get("/health", response_model=dict, status_code=200)
 async def health() -> dict:
     """
-    Root Get
+    API Endpoint to get health check
     """
     health = dict(
-        name="CIFAR 10 Imgage Classification API", api_version="1.0.0", model_version="7.0.0"
+        name="Contract NLI Language Inference API", api_version="1.0.0", model_version="1.0.7"
     )
 
     return health
@@ -45,7 +42,7 @@ async def health() -> dict:
 @root_router.get("/PredictNLI/{premise}/{hypothesis}", response_model=dict, status_code=200)
 async def PredictNLI(premise: str, hypothesis: str ) -> dict:
     """
-    Root Get
+    Given a premise and hypothesis predict Entailment, Contradiction or neutral
     """
     model_config = config.model_config
     trained_model_dir_path = TRAINED_MODEL_DIR.as_posix()

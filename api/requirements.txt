@@ -1,4 +1,6 @@
 #Cifar 10 model from package
+scikit-learn==1.2.0
+contract-nli==1.0.7
 d2l==1.0.0-alpha1.post0
 torchvision==0.14.1
 pytest==7.1.2
