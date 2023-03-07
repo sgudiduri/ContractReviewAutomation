@@ -27,6 +27,9 @@ root_router = APIRouter()
 async def favicon():
     return FileResponse(favicon_path)
 
+@app.get("/")
+async def docs_redirect():
+    return RedirectResponse(url='/docs')
 
 @root_router.get("/health", response_model=dict, status_code=200)
 async def health() -> dict:
